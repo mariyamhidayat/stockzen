@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695873602180",
+    "project_id": "stockzen-5d5c9",
+    "storage_bucket": "stockzen-5d5c9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695873602180:android:fa25cfae1a5f1e3b4938d1",
+        "android_client_info": {
+          "package_name": "com.example.stockzen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGsavup8SadkluKgni8iV7Fj0YYpm_pkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

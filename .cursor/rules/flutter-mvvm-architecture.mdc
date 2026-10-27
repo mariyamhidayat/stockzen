@@ -1,0 +1,30 @@
+---
+description: Flutter lib folder structure and MVVM architecture conventions for StockZen
+alwaysApply: true
+---
+
+# StockZen — MVVM
+
+Keep UI, business logic, and data access in separate layers.
+
+```
+lib/
+├── core/                 # constants, theme, utils, widgets — no feature logic
+├── data/
+│   ├── services/         # API, DB, storage
+│   └── repositories/     # orchestrate services
+└── features/<name>/
+    ├── models/
+    ├── viewmodels/       # UI state + use cases
+    ├── views/            # screens only
+    └── widgets/          # optional
+```
+
+- **View**: screens/widgets only. No API, DB, business rules, or direct service/repository calls.
+- **ViewModel**: UI state and use-case logic; talks to repositories; exposes state to the View.
+- **Model**: domain/data models under feature `models/` or `data/`.
+- **Repository**: abstracts data sources and orchestrates services.
+- **Service**: I/O only (API, local DB, storage).
+- **Core**: shared constants, theme, utils, and reusable widgets.
+
+New screens go in `features/<name>/views/`. Do not flatten feature code into `lib/`.

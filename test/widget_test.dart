@@ -1,30 +1,32 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:stockzen/main.dart';
+import 'package:stockzen/features/shell/viewmodels/shell_view_model.dart';
+import 'package:stockzen/features/shell/views/stockzen_app.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('shell shows the home placeholder', (tester) async {
+    await tester.pumpWidget(
+      const StockZenApp(viewModel: ShellViewModel.ready()),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('StockZen'), findsOneWidget);
+    expect(find.text('Your shop workspace will open here.'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('shell shows a loading indicator', (tester) async {
+    await tester.pumpWidget(
+      const StockZenApp(viewModel: ShellViewModel.loading()),
+    );
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('Loading'), findsOneWidget);
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+  });
+
+  testWidgets('shell shows a startup error', (tester) async {
+    await tester.pumpWidget(
+      const StockZenApp(viewModel: ShellViewModel.error()),
+    );
+
+    expect(find.text('StockZen could not start.'), findsOneWidget);
   });
 }

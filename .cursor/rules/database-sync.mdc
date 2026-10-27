@@ -1,0 +1,14 @@
+---
+description: SQLite local storage and Cloud Firestore sync rules for StockZen
+alwaysApply: true
+---
+
+# Database & Sync
+
+Approved storage is SQLite on the device and Cloud Firestore in the cloud. Do not replace either without approval.
+
+- Read and write SQLite first so the app works offline.
+- Queue local changes and sync them to Cloud Firestore when connectivity returns, so more than one device can share the shop's data.
+- Keep sync logic separate from screens. A failed sync stays retryable. Do not drop a change, and do not apply it twice.
+- Sales and stock updates are idempotent. A stable id must block a duplicate offline sale or a second application of the same stock change.
+- Backup is cloud backup plus a local export. Do not replace that pair with a single backup path.

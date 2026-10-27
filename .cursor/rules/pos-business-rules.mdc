@@ -1,0 +1,14 @@
+---
+description: POS currency, tax, stock, payment, and receipt rules for StockZen
+alwaysApply: true
+---
+
+# POS Business Rules
+
+- Currency is PKR (Pakistani Rupee).
+- Tax is disabled and zero by default in the MVP. Do not add tax to totals.
+- Customers and expenses are included in the MVP.
+- A successful sale reduces stock once. A retry or a second save must not reduce it again.
+- Received stock is added once. A retry must not add the same receipt again.
+- Payment and total math must match the line items. Do not round or drop an amount in a way that changes the balance due.
+- MVP receipts are digital only. Barcode scanning and receipt printing are deferred to a later phase.

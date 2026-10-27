@@ -1,0 +1,12 @@
+---
+description: Android-first platform scope for StockZen
+alwaysApply: true
+---
+
+# Platform
+
+Build the Android mobile app now. iOS and web come later.
+
+- Implement and verify features on Android.
+- Do not add iOS-only or web-only work in the current phases.
+- Keep the existing Flutter platform folders. Do not delete iOS, web, or desktop targets.

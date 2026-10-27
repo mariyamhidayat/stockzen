@@ -1,0 +1,13 @@
+---
+description: Firebase Authentication and role-storage rules for StockZen
+alwaysApply: true
+---
+
+# Authentication
+
+Approved auth is Firebase Authentication with password sign-in. Do not add another auth product without approval.
+
+- Sign-in and sign-out go through Firebase Authentication.
+- Shop Admin, Store Keeper, and Cashier are stored in the app data model (SQLite, synced to Cloud Firestore). They are not chosen on the login screen.
+- A user may have one or more of those three roles. Do not add any other role.
+- Do not add a role dropdown to the login screen.
